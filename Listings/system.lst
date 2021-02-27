@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 1   
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE SYSTEM
@@ -62,7 +62,7 @@ line level    source
   51          unsigned short set_wifi_uart_buffer(unsigned short dest, const unsigned char *src, unsigned short len)
   52          {
   53   1          unsigned char *obj = (unsigned char *)wifi_uart_tx_buf + DATA_START + dest;
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 2   
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 2   
 
   54   1          
   55   1          my_memcpy(obj,src,len);
@@ -126,7 +126,7 @@ line level    source
  113   1          wifi_uart_tx_buf[LENGTH_LOW] = len & 0xff;
  114   1          
  115   1          len += PROTOCOL_HEAD;
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 3   
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 3   
 
  116   1          check_sum = get_check_sum((unsigned char *)wifi_uart_tx_buf, len - 1);
  117   1          wifi_uart_tx_buf[len - 1] = check_sum;
@@ -190,7 +190,7 @@ line level    source
               #endif
  174   1        
  175   1          length = set_wifi_uart_buffer(length, "}", my_strlen("}"));
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 4   
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 4   
 
  176   1          
  177   1          wifi_uart_write_frame(PRODUCT_INFO_CMD, MCU_TX_VER, length);
@@ -254,7 +254,7 @@ line level    source
  235   1          index = get_dowmload_dpid_index(dp_id);
  236   1      
  237   1          if(dp_type != download_cmd[index].dp_type) {
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 5   
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 5   
 
  238   2              //错误提示
  239   2              return FALSE;
@@ -318,7 +318,7 @@ line level    source
                       }
                       
                       wifi_uart_write_frame(WEATHER_DATA_CMD, 0, 0);
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 6   
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 6   
 
                   }
               }
@@ -382,7 +382,7 @@ line level    source
               
                   if(stop_update_flag == ENABLE)
                       return ERROR;
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 7   
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 7   
 
               
                   //地图服务协议版本
@@ -446,7 +446,7 @@ line level    source
                   unsigned char *file_data_addr = NULL;
                   static unsigned short file_package_size = 0;                                //文件数据包一包的
              -大小
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 8   
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 8   
 
                   static unsigned char file_download_flag = 0;                                //文件下载标志
                   unsigned int file_download_size = 0;
@@ -510,7 +510,7 @@ line level    source
  476   2              break;
  477   2          
  478   2              case STATE_QUERY_CMD:                                   //状态查询
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 9   
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 9   
 
  479   2                  all_data_update();                               
  480   2              break;
@@ -574,7 +574,7 @@ line level    source
                               }
                               //恢复一切数据上报
                               stop_update_flag = DISABLE;
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 10  
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 10  
 
                           }
                       break;
@@ -638,7 +638,7 @@ line level    source
                           mcu_get_mac((unsigned char *)(wifi_data_process_buf + offset + DATA_START));
                       break;
               #endif
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 11  
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 11  
 
  599   2      
  600   2      #ifdef GET_WIFI_STATUS_ENABLE
@@ -702,7 +702,7 @@ line level    source
                               dp_len |= wifi_data_process_buf[offset + DATA_START + 1];
                               dp_len <<= 8;
                               dp_len |= wifi_data_process_buf[offset + DATA_START + 2];
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 12  
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 12  
 
                               dp_len <<= 8;
                               dp_len |= wifi_data_process_buf[offset + DATA_START + 3];
@@ -766,7 +766,7 @@ line level    source
                           voice_test_result(result);
                       break;
                       case VOICE_AWAKEN_TEST_CMD:                             //语音模组唤醒产测
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 13  
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 13  
 
                           result = wifi_data_process_buf[offset + DATA_START];
                           voice_awaken_test_result(result);
@@ -831,7 +831,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 
-C51 COMPILER V9.54   SYSTEM                                                                02/26/2021 13:53:45 PAGE 14  
+C51 COMPILER V9.54   SYSTEM                                                                02/27/2021 10:59:50 PAGE 14  
 
 
 C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

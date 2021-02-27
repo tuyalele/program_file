@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   OLED                                                                  02/26/2021 13:53:46 PAGE 1   
+C51 COMPILER V9.54   OLED                                                                  02/27/2021 10:59:50 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE OLED
@@ -62,7 +62,7 @@ line level    source
   52   1        
   53   1      }
   54          
-C51 COMPILER V9.54   OLED                                                                  02/26/2021 13:53:46 PAGE 2   
+C51 COMPILER V9.54   OLED                                                                  02/27/2021 10:59:50 PAGE 2   
 
   55          void IIC_Wait_Ack()
   56          {
@@ -126,7 +126,7 @@ line level    source
  114   1         IIC_Stop();
  115   1      }
  116          /**********************************************
-C51 COMPILER V9.54   OLED                                                                  02/26/2021 13:53:46 PAGE 3   
+C51 COMPILER V9.54   OLED                                                                  02/27/2021 10:59:50 PAGE 3   
 
  117          // IIC Write Data
  118          **********************************************/
@@ -190,7 +190,7 @@ line level    source
  176   1        while(Del_1ms--)
  177   1        { 
  178   2          for(j=0;j<123;j++);
-C51 COMPILER V9.54   OLED                                                                  02/26/2021 13:53:46 PAGE 4   
+C51 COMPILER V9.54   OLED                                                                  02/27/2021 10:59:50 PAGE 4   
 
  179   2        }
  180   1      }
@@ -254,7 +254,7 @@ line level    source
  238   2            OLED_Set_Pos(x,y);  
  239   2            for(i=0;i<8;i++)
  240   2            OLED_WR_Byte(F8X16[c*16+i],OLED_DATA);
-C51 COMPILER V9.54   OLED                                                                  02/26/2021 13:53:46 PAGE 5   
+C51 COMPILER V9.54   OLED                                                                  02/27/2021 10:59:50 PAGE 5   
 
  241   2            OLED_Set_Pos(x,y+1);
  242   2            for(i=0;i<8;i++)
@@ -318,7 +318,7 @@ line level    source
  300   1          for(t=0;t<16;t++)
  301   1          {
  302   2              OLED_WR_Byte(Hzk[2*no][t],OLED_DATA);
-C51 COMPILER V9.54   OLED                                                                  02/26/2021 13:53:46 PAGE 6   
+C51 COMPILER V9.54   OLED                                                                  02/27/2021 10:59:50 PAGE 6   
 
  303   2              adder+=1;
  304   2           }  
@@ -382,7 +382,7 @@ line level    source
  360   1        
  361   1        OLED_WR_Byte(0xDB,OLED_CMD);//set Vcomh
  362   1        OLED_WR_Byte(0x30,OLED_CMD);//
-C51 COMPILER V9.54   OLED                                                                  02/26/2021 13:53:46 PAGE 7   
+C51 COMPILER V9.54   OLED                                                                  02/27/2021 10:59:50 PAGE 7   
 
  363   1        
  364   1        OLED_WR_Byte(0x8D,OLED_CMD);//set charge pump enable

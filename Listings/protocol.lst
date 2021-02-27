@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 1   
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE PROTOCOL
@@ -62,7 +62,7 @@ line level    source
                   "realFeel",
                   "uvi",
                   "tips",
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 2   
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 2   
 
                   "windDir",
                   "windLevel",
@@ -126,7 +126,7 @@ line level    source
  109          void uart_transmit_output(unsigned char value)
  110          {
  111   1      //    #error "请将MCU串口发送函数填入该函数,并删除该行"
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 3   
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 3   
 
  112   1          Printchar2(value);//发字符=========================================================================
              -=========
@@ -190,7 +190,7 @@ line level    source
  167   1          mcu_dp_string_update(DPID_DATA_IS,&DATA[0],DATA_long); //STRING型数据上报;当前DATA指针,当前
              -DATA数据长度
  168   1      
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 4   
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 4   
 
  169   1        
  170   1          /*
@@ -254,7 +254,7 @@ line level    source
  227          使用说明 : 可下发可上报类型,需要在处理完数据后上报处理结果至app
  228          *****************************************************************************/
  229          static unsigned char dp_download_humidity_sampling_handle(const unsigned char value[], unsigned short leng
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 5   
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 5   
 
              -th)
  230          {
@@ -318,7 +318,7 @@ line level    source
  288   1          
  289   1          minitemp_set = mcu_get_dp_download_value(value,length);
  290   1          /*
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 6   
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 6   
 
  291   1          //VALUE类型数据处理
  292   1          
@@ -382,7 +382,7 @@ line level    source
  350   1          ret = mcu_dp_value_update(DPID_MINIHUM_SET,minihum_set);
  351   1          if(ret == SUCCESS)
  352   1              return SUCCESS;
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 7   
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 7   
 
  353   1          else
  354   1              return ERROR;
@@ -446,7 +446,7 @@ line level    source
  412   1              return SUCCESS;
  413   1          else
  414   1              return ERROR;
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 8   
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 8   
 
  415   1      }
  416          
@@ -510,7 +510,7 @@ line level    source
  474   2                  ret = dp_download_data_is_handle(value,length);
  475   2              break;
  476   2      
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 9   
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 9   
 
  477   2              
  478   2              default:
@@ -574,7 +574,7 @@ line level    source
                     
                   }
                   
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 10  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 10  
 
                   return SUCCESS;
               }
@@ -638,7 +638,7 @@ line level    source
                       Time_sys[a] = Time[a+1];
               
                     }
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 11  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 11  
 
                     
                    
@@ -702,7 +702,7 @@ line level    source
  658   2          }
  659   1      }
  660          #endif
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 12  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 12  
 
  661          
  662          #ifdef WEATHER_ENABLE
@@ -766,7 +766,7 @@ line level    source
               /**
                * @brief  天气数据用户自处理函数
                * @param[in] {name} 参数名
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 13  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 13  
 
                * @param[in] {type} 参数类型
                * @ref       0: int 型
@@ -830,7 +830,7 @@ line level    source
  779          
  780          #ifdef GET_WIFI_STATUS_ENABLE
               /**
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 14  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 14  
 
                * @brief  获取 WIFI 状态结果
                * @param[in] {result} 指示 WIFI 工作状态
@@ -894,7 +894,7 @@ line level    source
                * @return Null
                * @note   MCU需要自行实现该功能
                */
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 15  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 15  
 
               void stream_trans_send_result(unsigned char result)
               {
@@ -958,7 +958,7 @@ line level    source
                * @ref       0x00: 失败
                * @ref       0x01: 成功
                * @return Null
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 16  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 16  
 
                * @note   MCU需要自行实现该功能
                */
@@ -1022,7 +1022,7 @@ line level    source
                           //红外状态 2
                       break;
                         
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 17  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 17  
 
                       case 2:
                           //红外状态 3
@@ -1086,7 +1086,7 @@ line level    source
                * @return 数据处理结果
                * -           0(ERROR): 失败
                * -           1(SUCCESS): 成功
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 18  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 18  
 
                * @note   MCU需要自行实现该功能
                */
@@ -1150,7 +1150,7 @@ line level    source
                           Data[2]为日期，从1开始到31结束
                           Data[3]为时钟，从0开始到23结束
                           Data[4]为分钟，从0开始到59结束
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 19  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 19  
 
                           Data[5]为秒钟，从0开始到15结束
                           Data[6]为星期，从1开始到7结束，1代表星期一
@@ -1214,7 +1214,7 @@ line level    source
                               default:break;
                           }
                           
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 20  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 20  
 
                           unsigned short send_len = 0;
                           send_len = set_wifi_uart_byte(send_len, sub_cmd);
@@ -1278,7 +1278,7 @@ line level    source
                * @ref       0x04: 正在识别
                * @ref       0x05: 识别成功
                * @ref       0x06: 识别失败
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 21  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 21  
 
                * @return Null
                * @note   MCU需要自行实现该功能
@@ -1342,7 +1342,7 @@ line level    source
                * @param[in] {result} 音量值
                * @ref       0~10: 音量范围
                * @return Null
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 22  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 22  
 
                * @note   MCU需要自行实现该功能
                */
@@ -1406,7 +1406,7 @@ line level    source
                   unsigned short send_len = 0;
                 
                   switch(sub_cmd) {
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 23  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 23  
 
                       case 0x00: { //子命令  MCU功能设置
                           if(0x02 != length) {
@@ -1470,7 +1470,7 @@ line level    source
                           //bt_play 蓝牙开关功能   1(开)   / 0(关)
                           
                           
-C51 COMPILER V9.54   PROTOCOL                                                              02/26/2021 13:53:45 PAGE 24  
+C51 COMPILER V9.54   PROTOCOL                                                              02/27/2021 10:59:49 PAGE 24  
 
                           
                           send_len = 0;

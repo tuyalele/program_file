@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   SHT3X                                                                 02/26/2021 13:53:46 PAGE 1   
+C51 COMPILER V9.54   SHT3X                                                                 02/27/2021 10:59:50 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE SHT3X
@@ -62,7 +62,7 @@ line level    source
   52          //void Delay1ms()   //@24.000MHz
   53          //{
   54          //  unsigned char i, j;
-C51 COMPILER V9.54   SHT3X                                                                 02/26/2021 13:53:46 PAGE 2   
+C51 COMPILER V9.54   SHT3X                                                                 02/27/2021 10:59:50 PAGE 2   
 
   55          
   56          //  i = 24;
@@ -126,7 +126,7 @@ line level    source
  114   1          SDA = 0;
  115   1          SCL = 0;
  116   1          I2CDelay(10);
-C51 COMPILER V9.54   SHT3X                                                                 02/26/2021 13:53:46 PAGE 3   
+C51 COMPILER V9.54   SHT3X                                                                 02/27/2021 10:59:50 PAGE 3   
 
  117   1          SCL = 1;
  118   1          I2CDelay(10);
@@ -190,7 +190,7 @@ line level    source
  176   1        SCL = 0;
  177   1        SDA = 1;      //释放总线  
  178   1        for (i=0;i<8;i++) 
-C51 COMPILER V9.54   SHT3X                                                                 02/26/2021 13:53:46 PAGE 4   
+C51 COMPILER V9.54   SHT3X                                                                 02/27/2021 10:59:50 PAGE 4   
 
  179   1        {
  180   2          RDByte <<= 1; //移位
@@ -254,7 +254,7 @@ line level    source
  238          
  239          
  240          
-C51 COMPILER V9.54   SHT3X                                                                 02/26/2021 13:53:46 PAGE 5   
+C51 COMPILER V9.54   SHT3X                                                                 02/27/2021 10:59:50 PAGE 5   
 
  241          //==============================================================================循环读取模式
  242          etError SHT3X_XHGetTempAndHumi(int        *temp,
@@ -318,7 +318,7 @@ line level    source
  300          //  etError error;           // error code
  301          //  unsigned long int    rawValueTemp;    // temperature raw value from sensor
  302          //  unsigned long int    rawValueHumi;    // humidity raw value from sensor
-C51 COMPILER V9.54   SHT3X                                                                 02/26/2021 13:53:46 PAGE 6   
+C51 COMPILER V9.54   SHT3X                                                                 02/27/2021 10:59:50 PAGE 6   
 
  303          //  unsigned char Rdata[6]={0};
  304          //  unsigned char i;                                       
@@ -382,7 +382,7 @@ line level    source
  362          //    rawValueTemp =(Rdata[0] << 8) | Rdata[1];
  363          //    rawValueHumi =(Rdata[3] << 8) | Rdata[4];
  364          //    *temp =(int)( 1750 *rawValueTemp / 65535 - 450);
-C51 COMPILER V9.54   SHT3X                                                                 02/26/2021 13:53:46 PAGE 7   
+C51 COMPILER V9.54   SHT3X                                                                 02/27/2021 10:59:50 PAGE 7   
 
  365          //    *humi =(int)(1000 *rawValueHumi / 65535);
  366          //  }

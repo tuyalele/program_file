@@ -58,26 +58,26 @@ void wifi_work_state_led(void)
 		
 
 //		PrintString1("WIFI配置成功但未连上路由器\r\n");	//SUART1发送一个字符串
-						OLED_ShowCHinese(17,0,9);//待
-					OLED_ShowCHinese(35,0,15);
-					OLED_ShowCHinese(54,0,16);//连接
-					OLED_ShowCHinese(74,0,12);
-					OLED_ShowCHinese(95,0,13);
-					OLED_ShowCHinese(117,0,14);//路由器
-					OLED_ShowCHinese(140,0,20);
+						OLED_ShowCHinese(0,0,9);//待
+					OLED_ShowCHinese(18,0,15);
+					OLED_ShowCHinese(37,0,16);//连接
+					OLED_ShowCHinese(57,0,12);
+					OLED_ShowCHinese(78,0,13);
+					OLED_ShowCHinese(100,0,14);//路由器
+//					OLED_ShowCHinese(140,0,20);
 	
 		break;
 		
 	case WIFI_CONNECTED:                //WIFI配置成功且连上路由器
 		
 //		PrintString1("WIFI配置成功且连上路由器\r\n");	//SUART1发送一个字符串
-					OLED_ShowCHinese(17,0,9);//待
-					OLED_ShowCHinese(35,0,15);
-					OLED_ShowCHinese(54,0,16);//连接
-					OLED_ShowCHinese(74,0,17);
-					OLED_ShowCHinese(95,0,18);
-					OLED_ShowCHinese(117,0,19);//路由器
-					OLED_ShowCHinese(140,0,20);
+					OLED_ShowCHinese(0,0,9);//待
+					OLED_ShowCHinese(18,0,15);
+					OLED_ShowCHinese(37,0,16);//连接
+					OLED_ShowCHinese(57,0,17);
+					OLED_ShowCHinese(78,0,18);
+					OLED_ShowCHinese(100,0,19);//
+//					OLED_ShowCHinese(117,0,20);
 	
 		break;
 		
@@ -189,21 +189,21 @@ void STC_Init(void){
 //	PrintString1("STC15F2K60S2 UART1 Test Prgramme!\r\n");	//SUART1发送一个字符串
 	PrintString2("STC15F2K60S2 UART2 Test Prgramme!\r\n");	//SUART2发送一个字符串
 	
-//	delay_ms(255);
-//	SHT3XInit();
-//	
-//		OLED_ShowString(0,2,"SHT30",12);
-//	delay_ms(255);
-//	OLED_ShowString(45,2,">",12);
-//	delay_ms(255);
-//	OLED_ShowString(53,2,">",12);
-//	delay_ms(255);
-//	OLED_ShowString(61,2,">",12);
-//	delay_ms(255);
-//	OLED_ShowString(69,2,">",12);
-//	delay_ms(255);
-//	OLED_ShowString(79,2,"OK",12);
-//	delay_ms(255);
+	delay_ms(255);
+	SHT3XInit();
+	
+		OLED_ShowString(0,2,"SHT30",12);
+	delay_ms(255);
+	OLED_ShowString(45,2,">",12);
+	delay_ms(255);
+	OLED_ShowString(53,2,">",12);
+	delay_ms(255);
+	OLED_ShowString(61,2,">",12);
+	delay_ms(255);
+	OLED_ShowString(69,2,">",12);
+	delay_ms(255);
+	OLED_ShowString(79,2,"OK",12);
+	delay_ms(255);
 
 	Timer0_init();
 	
@@ -281,8 +281,11 @@ switch(key_scan())
         {
             case 1://RET
                
-//						wifi_reset();
-//						OLED_Clear(); 
+						wifi_reset();
+						
+					OLED_Clear(); 
+					read_sensor();
+					wifi_work_state_led();
 						
             break;
             case 2://OK
@@ -335,33 +338,30 @@ void main(void)
 
 		int count = 0;
 	
-//STC_Init();
+STC_Init();
 
 
 	while (1)
 	{
 		
-		
-		PrintString2("STC15F2K60S2 UART2 Test Prgramme!\r\n");	//SUART2发送一个字符串
-//			wifi_uart_service();//wifi循环
-//			key_set();
+			wifi_uart_service();//wifi循环
+			key_set();
 
-//			if(Tim_test < -6000 || Tim_test > 6000){
-//				
-//				//============================================温湿度
-//				OLED_ShowCHinese(0,0,6);
-//					read_sensor();
-//					wifi_work_state_led();
+			if(Tim_test < -6000 || Tim_test > 6000){
+				
+				//============================================温湿度
+				
+					OLED_Clear(); 
+					read_sensor();
+					wifi_work_state_led();
 					
-
-
 					//============================================
 
 	
-//all_data_update();//数据上报
-//wifi_work_state_led();
-//			Tim_test = 0;
-//		}
+				all_data_update();//数据上报
+				wifi_work_state_led();
+				Tim_test = 0;
+		}
 	
 	}	
 	
