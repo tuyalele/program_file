@@ -1,0 +1,74 @@
+C51 COMPILER V9.54   KEY                                                                   02/26/2021 13:53:44 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE KEY
+OBJECT MODULE PLACED IN .\Objects\key.obj
+COMPILER INVOKED BY: H:\Keil_v5\C51\BIN\C51.EXE H\key.c COMPACT RTX51 OPTIMIZE(8,SPEED) BROWSE INCDIR(.\H;.\mcu_sdk;.\UA
+                    -RT;.\0.96OLED;.\SHT30) DEBUG OBJECTEXTEND PRINT(.\Listings\key.lst) TABS(2) OBJECT(.\Objects\key.obj)
+
+line level    source
+
+   1          
+   2          #include  "main.h"
+   3          #include  "key.h"
+   4          sbit RET = P5^4;
+   5          sbit OK = P4^7;
+   6          sbit W = P1^2;
+   7          sbit E = P1^3;
+   8          sbit S = P1^4;
+   9          sbit D = P1^5;
+  10          
+  11          
+  12          u8 key_scan(void)//不允许同时按多个键
+  13          {
+  14   1        u8 ke = 0;
+  15   1        RET = 1;
+  16   1        OK = 1;
+  17   1        W = 1;
+  18   1        E = 1;
+  19   1        S = 1;
+  20   1        D = 1;
+  21   1        
+  22   1        delay_us(10);
+  23   1        
+  24   1        if(RET == 0){
+  25   2          ke = ke+1;
+  26   2        }
+  27   1        if(OK == 0){
+  28   2          ke = ke+2;
+  29   2        }
+  30   1        if(W == 0){
+  31   2          ke = ke+4;
+  32   2        }
+  33   1        if(E == 0){
+  34   2          ke = ke+8;
+  35   2        }
+  36   1        if(S == 0){
+  37   2          ke = ke+16;
+  38   2        }
+  39   1        if(D == 0){
+  40   2          ke = ke+32;
+  41   2        }
+  42   1        
+  43   1        return ke;
+  44   1        
+  45   1      }
+  46          
+  47          
+  48          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     80    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.54   KEY                                                                   02/26/2021 13:53:44 PAGE 2   
+
+   PDATA SIZE       =   ----       1
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

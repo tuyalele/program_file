@@ -1,0 +1,15 @@
+".\Objects\main.obj",
+".\Objects\UART interrupt.obj",
+".\Objects\UART.obj",
+".\Objects\delay.obj",
+".\Objects\TIME interrupt.obj",
+".\Objects\timer.obj",
+".\Objects\reda_data.obj",
+".\Objects\key.obj",
+".\Objects\mcu_api.obj",
+".\Objects\protocol.obj",
+".\Objects\system.obj",
+".\Objects\oled.obj",
+".\Objects\SHT3X.obj" 
+TO ".\Objects\ÎÂ¶ÈÊª¶È¼ì²â" RTX51 
+PRINT(".\Listings\ÎÂ¶ÈÊª¶È¼ì²â.m51") RAMSIZE(256) 

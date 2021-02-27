@@ -1,0 +1,411 @@
+C51 COMPILER V9.54   MAIN                                                                  02/26/2021 13:53:42 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: H:\Keil_v5\C51\BIN\C51.EXE main.c COMPACT RTX51 OPTIMIZE(8,SPEED) BROWSE INCDIR(.\H;.\mcu_sdk;.\UAR
+                    -T;.\0.96OLED;.\SHT30) DEBUG OBJECTEXTEND PRINT(.\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          
+   2          #include  "main.h"
+   3          
+   4          #include "STC15.h"
+   5          #include  "delay.h"
+   6          
+   7          // int Time_sys[6];
+   8           int Tim_test;
+   9          
+  10          void wifi_reset(void)
+  11          {
+  12   1      
+  13   1      mcu_reset_wifi();
+  14   1      delay_ms(10);
+  15   1        mcu_set_wifi_mode(SMART_CONFIG);
+  16   1      //mcu_get_reset_wifi_flag();
+  17   1      
+  18   1      
+  19   1      
+  20   1      }
+  21          /*****************************************************************************
+  22          函数名称 : wifi_work_state_led
+  23          功能描述 : wifi状态查询
+  24          输入参数 : 无
+  25          返回参数 : 无
+  26          使用说明 : 无
+  27          *****************************************************************************/
+  28          void wifi_work_state_led(void)
+  29          {
+  30   1        u16 wifi_state = mcu_get_wifi_work_state();
+  31   1        switch(wifi_state)
+  32   1        {
+  33   2        case SMART_CONFIG_STATE:            //smartconfig配置状态
+  34   2          
+  35   2                OLED_ShowCHinese(17,0,9);//待
+  36   2                OLED_ShowCHinese(35,0,10);
+  37   2                OLED_ShowCHinese(54,0,11);//配置
+  38   2                OLED_ShowString(74,0,"WIFI",16);
+  39   2                OLED_ShowCHinese(110,0,20);
+  40   2      
+  41   2      
+  42   2      //    PrintString1("smartconfig配置状态!\r\n"); //SUART1发送一个字符串
+  43   2        
+  44   2          break;
+  45   2          
+  46   2        case AP_STATE:                      //AP配置状态
+  47   2          
+  48   2      //      PrintString1("AP配置状态!\r\n");  //SUART1发送一个字符串
+  49   2      
+  50   2                OLED_ShowString(17,0,"AP",16);
+  51   2                OLED_ShowCHinese(54,0,10);
+  52   2                OLED_ShowCHinese(74,0,11);//配置
+  53   2                OLED_ShowCHinese(95,0,20);
+  54   2        
+C51 COMPILER V9.54   MAIN                                                                  02/26/2021 13:53:42 PAGE 2   
+
+  55   2          break;
+  56   2          
+  57   2        case WIFI_NOT_CONNECTED:            //WIFI配置成功但未连上路由器
+  58   2          
+  59   2      
+  60   2      //    PrintString1("WIFI配置成功但未连上路由器\r\n"); //SUART1发送一个字符串
+  61   2                  OLED_ShowCHinese(17,0,9);//待
+  62   2                OLED_ShowCHinese(35,0,15);
+  63   2                OLED_ShowCHinese(54,0,16);//连接
+  64   2                OLED_ShowCHinese(74,0,12);
+  65   2                OLED_ShowCHinese(95,0,13);
+  66   2                OLED_ShowCHinese(117,0,14);//路由器
+  67   2                OLED_ShowCHinese(140,0,20);
+  68   2        
+  69   2          break;
+  70   2          
+  71   2        case WIFI_CONNECTED:                //WIFI配置成功且连上路由器
+  72   2          
+  73   2      //    PrintString1("WIFI配置成功且连上路由器\r\n"); //SUART1发送一个字符串
+  74   2                OLED_ShowCHinese(17,0,9);//待
+  75   2                OLED_ShowCHinese(35,0,15);
+  76   2                OLED_ShowCHinese(54,0,16);//连接
+  77   2                OLED_ShowCHinese(74,0,17);
+  78   2                OLED_ShowCHinese(95,0,18);
+  79   2                OLED_ShowCHinese(117,0,19);//路由器
+  80   2                OLED_ShowCHinese(140,0,20);
+  81   2        
+  82   2          break;
+  83   2          
+  84   2        case WIFI_CONN_CLOUD:               //WIFI已经连接上云服务器
+  85   2      
+  86   2      //    PrintString1("WIFI已经连接上云服务器\r\n"); //SUART1发送一个字符串
+  87   2                OLED_ShowString(17,0,"OK",12);
+  88   2          break;
+  89   2          
+  90   2        case WIFI_LOW_POWER:                //WIFI处于低功耗模式
+  91   2      //    PrintString1("WIFI处于低功耗模式\r\n"); //SUART1发送一个字符串
+  92   2                OLED_ShowCHinese(17,0,9);//待
+  93   2                OLED_ShowCHinese(35,0,21);
+  94   2                OLED_ShowCHinese(54,0,22);//机中
+  95   2                OLED_ShowCHinese(74,0,20);
+  96   2          break;
+  97   2          
+  98   2        case SMART_AND_AP_STATE:            //WIFI smartconfig&AP 模式
+  99   2      //    PrintString1("WIFI smartconfig&AP 模式\r\n"); //SUART1发送一个字符串
+ 100   2        
+ 101   2          break;
+ 102   2          
+ 103   2        default:                            //未知状态
+ 104   2      //    PrintString1("未知状态\r\n"); //SUART1发送一个字符串
+ 105   2                OLED_ShowCHinese(17,0,23);
+ 106   2                OLED_ShowCHinese(35,0,24);
+ 107   2                OLED_ShowCHinese(54,0,25);
+ 108   2                OLED_ShowCHinese(74,0,26);//未知状态
+ 109   2                OLED_ShowCHinese(95,0,20);
+ 110   2         break;
+ 111   2        }
+ 112   1        /*
+ 113   1                OLED_ShowCHinese(17,0,9);//待
+ 114   1                OLED_ShowCHinese(35,0,15);
+ 115   1                OLED_ShowCHinese(54,0,16);//连接
+ 116   1                OLED_ShowCHinese(74,0,12);
+C51 COMPILER V9.54   MAIN                                                                  02/26/2021 13:53:42 PAGE 3   
+
+ 117   1                OLED_ShowCHinese(95,0,13);
+ 118   1                OLED_ShowCHinese(117,0,14);//路由器
+ 119   1                OLED_ShowCHinese(140,0,20);
+ 120   1        */
+ 121   1      }
+ 122          
+ 123          
+ 124           
+ 125          /********************* Timer0中断函数************************/
+ 126          void timer0_int (void) interrupt TIMER0_VECTOR
+ 127          {
+ 128   1      P55 = 0;
+ 129   1      
+ 130   1            Tim_test++;
+ 131   1      P55 = 1;
+ 132   1      P55 = 0;
+ 133   1      }
+ 134          
+ 135          
+ 136          
+ 137          void STC_Init(void){
+ 138   1      
+ 139   1      //GPIO初始化
+ 140   1        P0M1 = 0; P0M0 = 0; //设置为准双向口
+ 141   1        P1M1 = 0; P1M0 = 0; //设置为准双向口
+ 142   1        P2M1 = 0; P2M0 = 0; //设置为准双向口
+ 143   1        P3M1 = 0; P3M0 = 0; //设置为准双向口
+ 144   1        P4M1 = 0; P4M0 = 0; //设置为准双向口
+ 145   1        P5M1 = 0; P5M0 = 0; //设置为准双向口
+ 146   1        P6M1 = 0; P6M0 = 0; //设置为准双向口
+ 147   1        P7M1 = 0; P7M0 = 0; //设置为准双向口
+ 148   1      
+ 149   1        
+ 150   1      
+ 151   1        OLED_Init();      //初始化OLED  
+ 152   1        OLED_Clear(); 
+ 153   1        
+ 154   1        OLED_ShowString(0,0,"OLED",12);
+ 155   1        delay_ms(255);
+ 156   1        OLED_ShowString(33,0,">",12);
+ 157   1        delay_ms(255);
+ 158   1        OLED_ShowString(41,0,">",12);
+ 159   1        delay_ms(255);
+ 160   1        OLED_ShowString(49,0,">",12);
+ 161   1        delay_ms(255);
+ 162   1        OLED_ShowString(57,0,">",12);
+ 163   1        delay_ms(255);
+ 164   1        OLED_ShowString(67,0,"OK",12);
+ 165   1        delay_ms(255);
+ 166   1        
+ 167   1      
+ 168   1      
+ 169   1        
+ 170   1      
+ 171   1      //UART初始化
+ 172   1      //  UART1_config(1);  // 选择波特率, 2: 使用Timer2做波特率, 其它值: 使用Timer1做波特率.
+ 173   1        UART2_config(2);  // 选择波特率, 2: 使用Timer2做波特率, 其它值: 无效.
+ 174   1        EA = 1;           //允许全局中断
+ 175   1      
+ 176   1          OLED_ShowString(0,1,"UART",12);
+ 177   1        delay_ms(255);
+ 178   1        OLED_ShowString(33,1,">",12);
+C51 COMPILER V9.54   MAIN                                                                  02/26/2021 13:53:42 PAGE 4   
+
+ 179   1        delay_ms(255);
+ 180   1        OLED_ShowString(41,1,">",12);
+ 181   1        delay_ms(255);
+ 182   1        OLED_ShowString(49,1,">",12);
+ 183   1        delay_ms(255);
+ 184   1        OLED_ShowString(57,1,">",12);
+ 185   1        delay_ms(255);
+ 186   1        OLED_ShowString(67,1,"OK",12);
+ 187   1        delay_ms(255);
+ 188   1        
+ 189   1      //  PrintString1("STC15F2K60S2 UART1 Test Prgramme!\r\n");  //SUART1发送一个字符串
+ 190   1        PrintString2("STC15F2K60S2 UART2 Test Prgramme!\r\n");  //SUART2发送一个字符串
+ 191   1        
+ 192   1      //  delay_ms(255);
+ 193   1      //  SHT3XInit();
+ 194   1      //  
+ 195   1      //    OLED_ShowString(0,2,"SHT30",12);
+ 196   1      //  delay_ms(255);
+ 197   1      //  OLED_ShowString(45,2,">",12);
+ 198   1      //  delay_ms(255);
+ 199   1      //  OLED_ShowString(53,2,">",12);
+ 200   1      //  delay_ms(255);
+ 201   1      //  OLED_ShowString(61,2,">",12);
+ 202   1      //  delay_ms(255);
+ 203   1      //  OLED_ShowString(69,2,">",12);
+ 204   1      //  delay_ms(255);
+ 205   1      //  OLED_ShowString(79,2,"OK",12);
+ 206   1      //  delay_ms(255);
+ 207   1      
+ 208   1        Timer0_init();
+ 209   1        
+ 210   1          OLED_ShowString(0,3,"Timer",12);
+ 211   1        delay_ms(255);
+ 212   1        OLED_ShowString(45,3,">",12);
+ 213   1        delay_ms(255);
+ 214   1        OLED_ShowString(53,3,">",12);
+ 215   1        delay_ms(255);
+ 216   1        OLED_ShowString(61,3,">",12);
+ 217   1        delay_ms(255);
+ 218   1        OLED_ShowString(69,3,">",12);
+ 219   1        delay_ms(255);
+ 220   1        OLED_ShowString(79,3,"OK",12);
+ 221   1        delay_ms(255);
+ 222   1        
+ 223   1      
+ 224   1        wifi_protocol_init();//涂鸦wifi协议初始化
+ 225   1        
+ 226   1          OLED_ShowString(0,4,"Tuya",12);
+ 227   1        delay_ms(255);
+ 228   1        OLED_ShowString(33,4,">",12);
+ 229   1        delay_ms(255);
+ 230   1        OLED_ShowString(41,4,">",12);
+ 231   1        delay_ms(255);
+ 232   1        OLED_ShowString(49,4,">",12);
+ 233   1        delay_ms(255);
+ 234   1        OLED_ShowString(57,4,">",12);
+ 235   1        delay_ms(255);
+ 236   1        OLED_ShowString(67,4,"OK",12);
+ 237   1        delay_ms(1000);
+ 238   1        OLED_Clear(); 
+ 239   1      }
+ 240          
+C51 COMPILER V9.54   MAIN                                                                  02/26/2021 13:53:42 PAGE 5   
+
+ 241          /*****************************************************************************
+ 242          函数名称 : read_sensor
+ 243          功能描述 : 读取传感器
+ 244          输入参数 : 无
+ 245          返回参数 : 无
+ 246          使用说明 : 无
+ 247          *****************************************************************************/
+ 248          static void read_sensor(void)
+ 249          {
+ 250   1          int temp,humi,temper,humidity;
+ 251   1        //=================================================================================温湿度
+ 252   1                SHT3X_XHGetTempAndHumi(&temp,&humi);
+ 253   1                temper = temp;
+ 254   1                humidity = humi;
+ 255   1        
+ 256   1        
+ 257   1                OLED_ShowCHinese(0,2,0);
+ 258   1                OLED_ShowCHinese(17,2,1);//温度
+ 259   1                OLED_ShowString(35,2,":",16);
+ 260   1                OLED_ShowNum(54,2,(temper/10),2,16);
+ 261   1                OLED_ShowString(74,2,".",16);
+ 262   1                OLED_ShowNum(83,2,(temper%10),1,16);
+ 263   1        
+ 264   1                OLED_ShowCHinese(0,4,2);
+ 265   1                OLED_ShowCHinese(17,4,1);//湿度
+ 266   1                OLED_ShowString(35,4,":",16);
+ 267   1                OLED_ShowNum(54,4,(humidity/10),2,16);
+ 268   1                OLED_ShowString(74,4,".",16);
+ 269   1                OLED_ShowNum(83,4,(humidity%10),1,16);
+ 270   1                OLED_ShowString(100,4,"%",16);
+ 271   1                
+ 272   1          mcu_dp_value_update(DPID_TEMP_CURRENT,temper); //VALUE型数据上报;当前温度
+ 273   1          mcu_dp_value_update(DPID_HUMIDITY_VALUE,humidity/10); //VALUE型数据上报;当前当前湿度
+ 274   1        //=======================================================================================
+ 275   1      }
+ 276          
+ 277          void key_set(void){
+ 278   1      
+ 279   1      
+ 280   1      switch(key_scan())
+ 281   1              {
+ 282   2                  case 1://RET
+ 283   2                     
+ 284   2      //            wifi_reset();
+ 285   2      //            OLED_Clear(); 
+ 286   2                  
+ 287   2                  break;
+ 288   2                  case 2://OK
+ 289   2                    
+ 290   2                  
+ 291   2                   
+ 292   2                  break;
+ 293   2                  case 4://W
+ 294   2      
+ 295   2                  
+ 296   2                
+ 297   2                  break;
+ 298   2                  case 8://E
+ 299   2                      
+ 300   2                  
+ 301   2                  
+ 302   2                  break;
+C51 COMPILER V9.54   MAIN                                                                  02/26/2021 13:53:42 PAGE 6   
+
+ 303   2                  case 16://S
+ 304   2                  
+ 305   2                  
+ 306   2                  
+ 307   2                  break;
+ 308   2                  case 32://D
+ 309   2                      
+ 310   2                  
+ 311   2                  
+ 312   2                  break;
+ 313   2                  
+ 314   2                  default:break;
+ 315   2              }
+ 316   1      
+ 317   1      
+ 318   1      
+ 319   1      }
+ 320          
+ 321          //========================================================================
+ 322          // 函数: void main(void)
+ 323          // 描述: 主函数。
+ 324          // 参数: none.
+ 325          // 返回: none.
+ 326          // 版本: VER1.0
+ 327          // 日期: 2014-11-28
+ 328          // 备注: 
+ 329          //========================================================================
+ 330          void main(void)
+ 331          {
+ 332   1        
+ 333   1        
+ 334   1        
+ 335   1      
+ 336   1          int count = 0;
+ 337   1        
+ 338   1      //STC_Init();
+ 339   1      
+ 340   1      
+ 341   1        while (1)
+ 342   1        {
+ 343   2          
+ 344   2          
+ 345   2          PrintString2("STC15F2K60S2 UART2 Test Prgramme!\r\n");  //SUART2发送一个字符串
+ 346   2      //      wifi_uart_service();//wifi循环
+ 347   2      //      key_set();
+ 348   2      
+ 349   2      //      if(Tim_test < -6000 || Tim_test > 6000){
+ 350   2      //        
+ 351   2      //        //============================================温湿度
+ 352   2      //        OLED_ShowCHinese(0,0,6);
+ 353   2      //          read_sensor();
+ 354   2      //          wifi_work_state_led();
+ 355   2                
+ 356   2      
+ 357   2      
+ 358   2                //============================================
+ 359   2      
+ 360   2        
+ 361   2      //all_data_update();//数据上报
+ 362   2      //wifi_work_state_led();
+ 363   2      //      Tim_test = 0;
+ 364   2      //    }
+C51 COMPILER V9.54   MAIN                                                                  02/26/2021 13:53:42 PAGE 7   
+
+ 365   2        
+ 366   2        } 
+ 367   1        
+ 368   1        
+ 369   1        
+ 370   1        
+ 371   1        
+ 372   1        
+ 373   1        
+ 374   1        
+ 375   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1465    ----
+   CONSTANT SIZE    =     76    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =      2      10
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

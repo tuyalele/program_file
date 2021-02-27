@@ -1,0 +1,32 @@
+C51 COMPILER V9.54   TIME_INTERRUPT                                                        02/26/2021 13:53:44 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE TIME_INTERRUPT
+OBJECT MODULE PLACED IN .\Objects\TIME interrupt.obj
+COMPILER INVOKED BY: H:\Keil_v5\C51\BIN\C51.EXE H\TIME interrupt.c COMPACT RTX51 OPTIMIZE(8,SPEED) BROWSE INCDIR(.\H;.\m
+                    -cu_sdk;.\UART;.\0.96OLED;.\SHT30) DEBUG OBJECTEXTEND PRINT(.\Listings\TIME interrupt.lst) TABS(2) OBJECT(.\Objects\TIME 
+                    -interrupt.obj)
+
+line level    source
+
+   1          
+   2          
+   3          
+   4          
+   5          
+   6          
+   7          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
